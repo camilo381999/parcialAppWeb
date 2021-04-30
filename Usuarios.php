@@ -25,7 +25,7 @@ class Usuarios extends Conexion
 			$result = $statement->fetch();
 
 			//Obtener el nombre y el id del usuario
-			$_SESSION['NOMBRE'] = $result['NOMBRE'] . " " . $result['APELLIDO'];
+			$_SESSION['NOMBRE'] = $result['NOMBRE'];
 			$_SESSION['ID'] = $result['ID_USUARIO'];
 			$_SESSION['PERFIL'] = "Usuario";
 			return $result;
@@ -43,16 +43,6 @@ class Usuarios extends Conexion
 		if ($statement->rowCount() == 1) {
 			$result = $statement->fetch();
 			return $result;
-		} else {
-			$statement = $this->db->prepare("SELECT * FROM tecnicos
-			 WHERE CORREO = :Correo AND ESTADO = 'Activo' ");
-
-			$statement->bindParam(':Correo', $Correo);
-			$statement->execute();
-			if ($statement->rowCount() == 1) {
-				$result = $statement->fetch();
-				return $result;
-			}
 		}
 		return null;
 	}
@@ -158,11 +148,6 @@ class Usuarios extends Conexion
 		return $_SESSION['PERFIL'];
 	}
 
-	public function setEstado()
-	{
-		$_SESSION['ESTADO'] = 'Inactivo';
-		$this->Salir2();
-	}
 
 	public function sesionIniciada()
 	{
@@ -194,15 +179,11 @@ class Usuarios extends Conexion
 	public function validateSessionIndex()
 	{
 		if ($this->sesionIniciada()) {
-			if ($_SESSION['PERFIL'] == 'Técnico') {
-				header('location: index-Tecnicos.php');
-			}
+			
 			if ($_SESSION['PERFIL'] == 'Usuario') {
-				header('location: index-Clientes.php');
+				header('location: index.php');
 			}
-			if ($_SESSION['PERFIL'] == 'Administrador') {
-				header('location: index-Admin.php');
-			}
+		
 		}
 	}
 
@@ -210,13 +191,6 @@ class Usuarios extends Conexion
 	{
 		if ($_SESSION['ID'] == null) {
 			header('location: ingresar.php');
-		}
-
-		if ($_SESSION['PERFIL'] == 'Técnico') {
-			header('location: index-Tecnicos.php');
-		}
-		if ($_SESSION['PERFIL'] == 'Administrador') {
-			header('location: index-Admin.php');
 		}
 	}
 

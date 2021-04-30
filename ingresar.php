@@ -14,7 +14,7 @@ if (isset($_POST['ingresar'])) {
 	);
 
 	if ($validar->obtener_error() === '' && !is_null($validar->getResult())) {
-		header('Location: index-Clientes.php');
+		header('Location: index.php');
 	}
 }
 

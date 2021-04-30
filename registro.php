@@ -12,12 +12,9 @@ if (isset($_POST['registrar'])) {
 	//Se valida que todos los datos esten completos
 	$validar = new ValidarRegistro(
 		$_POST['Nombre'],
-		$_POST['Apellido'],
 		$_POST['Cedula'],
 		$_POST['Correo'],
-		$_POST['Telefono'],
-		$_POST['Contrasena'],
-		$_POST['Localidad']
+		$_POST['Contrasena']
 	);
 
 	//Si el registro es valido se registra en la base de datos
@@ -26,14 +23,11 @@ if (isset($_POST['registrar'])) {
 		//Dentro del if se encripta la contraseña antes de registrar el usuario
 		if ($Modelo->add(
 			$validar->getNombre(),
-			$validar->getApellido(),
 			$validar->getCedula(),
 			$validar->getCorreo(),
-			$validar->getTelefono(),
-			password_hash($validar->getContrasena(), PASSWORD_DEFAULT),
-			$validar->getLocalidad()
+			password_hash($validar->getContrasena(), PASSWORD_DEFAULT)
 		)) {
-			header('Location: index-Clientes.php');
+			header('Location: index.php');
 		} else {
 			header('Location: registro.php');
 		}
