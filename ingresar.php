@@ -55,7 +55,8 @@ include_once('templates/menu.php');
 				}
 				?>
 				<button name="ingresar" type="submit" class="btn btn-primary btn-block">Inicia Sesión</button>
-				<a href="recuperar_password.php">¿Olvidó su contraseña?</a>
+				<br>
+				<a href="registro.php">Puedes registrarte aquí</a>
 			</form>
 		</div>
 		<div class="col-md-4 col-sm-3 col-xs-12"></div>

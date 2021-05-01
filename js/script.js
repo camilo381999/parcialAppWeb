@@ -6,8 +6,9 @@ function sumar(){
         suma = suma + Number(res[3].trim().replace(/[^0-9\,-]+/g, ""));
     });
 
-    var iva = suma * 0.19;
-    var subtotal = suma - iva;
+    var subtotal = suma /1.19;
+    var iva = suma - subtotal;
+    
 
     const options2 = { style: 'currency', currency: 'COP' };
     const numberFormat2 = new Intl.NumberFormat('es-CO', options2);

@@ -8,13 +8,13 @@ include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 ?>
 
-<div class="container-fluid" id="lista-productos">
+<div class="container-fluid" >
     <br><br><br>
     <h2 class="h2-titulos">Nuestros productos</h2>
     <br>
 
     <div class="row">
-        <div class="col-md-8 col-sm-7 col-xs-12">
+        <div class="col-md-8 col-sm-7 col-xs-12" id="lista-productos">
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="card" style="width: 18rem;">
@@ -100,13 +100,23 @@ include_once('templates/menu.php');
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody  class="valor">
+                    <tbody class="valor">
                     </tbody>
                 </table>
 
                 <a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
-                <a href="#" id="procesar-pedido" class="btn btn-danger btn-block">Procesar Compra</a>
+                
+                
+
             </div>
+            <br>
+            <a href="<?php
+                if ($ModeloUsuarios->sesionIniciada()) {
+                    echo '#';
+                } else {
+                    echo 'ingresar.php';
+                }
+                ?>" id="procesar-pedido" class="btn btn-danger btn-block">Procesar Compra</a>
             <br>
             <div class="card border-secondary mb-3" id="cardTotal">
                 <div class="card-header">Factura</div>
@@ -114,7 +124,6 @@ include_once('templates/menu.php');
                     <p class="card-text" id="subtotal">Subtotal: </p>
                     <p class="card-text" id="iva">IVA 19%: </p>
                     <h5 class="card-title" id="total">Total a pagar: </h5>
-
                 </div>
             </div>
 
