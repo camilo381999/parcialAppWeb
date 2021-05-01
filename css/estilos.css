@@ -109,11 +109,8 @@ body{
     margin: 0 auto 20px;
 }
 
- .comentarios{
-  color: #118AB2 !important;
-   
- }
 
+<<<<<<< HEAD
  .form-calendar-container{
   background: #fff;
   padding: 35px;
@@ -122,6 +119,12 @@ body{
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px #000;
 }
+=======
+ a{
+   color: #000;
+ }
+
+>>>>>>> 729123d3c251928c74ff5e1ff4ee11866fe2b722
 
 .img-info{
   display:block;
@@ -142,6 +145,7 @@ body{
   font-size: 23px;
 }
 
+<<<<<<< HEAD
 .parrafo-Subtitulos{
   color:#073B4C;
   text-align: center;
@@ -166,3 +170,5 @@ aside{
   top: 0;
   left: 25%;
 }
+=======
+>>>>>>> 729123d3c251928c74ff5e1ff4ee11866fe2b722
