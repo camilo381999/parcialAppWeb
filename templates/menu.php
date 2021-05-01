@@ -9,30 +9,7 @@ $ControlSesion = new Usuarios();
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a  class="nav-link dropdown-toggle img-fluid"  href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carro</a>
-                            <div id="carrito" class="dropdown-menu" aria-labelledby="navbarCollapse">
-                                <table id="lista-carrito" class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Imagen</th>
-                                            <th>Nombre</th>
-                                            <th>Precio</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody></tbody>
-                                </table>
-
-                                <a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
-                                <a href="#" id="procesar-pedido" class="btn btn-danger btn-block">Procesar
-                                    Compra</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+        
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <?php
