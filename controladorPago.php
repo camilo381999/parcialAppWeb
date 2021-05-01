@@ -12,10 +12,14 @@ $usuario = new Usuarios();
 $modelo = new Carrito();
 date_default_timezone_set('America/Bogota');
 
-$toarray=json_decode($data,true);
-$idFactura=random_int(100, 999);
-foreach($toarray as $producto){
-    $modelo->add($usuario->getId(), $producto['id'], $producto['titulo'], $producto['precio'], $idFactura, $hoy = date("Y-m-d"));
+$toarray = json_decode($data, true);
+$idFactura = random_int(100, 999);
+foreach ($toarray as $producto) {
+
+    $num = $producto['precio'];
+    $value = str_replace( '$', '', $num );
+    $valueT= str_replace( '.', '', $value );
+    $modelo->add($usuario->getId(), $producto['id'], $producto['titulo'], $valueT, $idFactura, $hoy = date("Y-m-d"));
 }
- 
- echo"</body></html>";
+
+echo "</body></html>";
