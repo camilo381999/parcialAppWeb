@@ -2,6 +2,8 @@
 include_once('Conexion.php');
 include_once('Usuarios.php');
 
+date_default_timezone_set('America/Bogota');
+
 class Carrito extends Conexion
 {
 
@@ -30,6 +32,7 @@ class Carrito extends Conexion
 
     public function selectParaCsv()
     {
+        //$query = $this->db->query("SELECT * FROM carrito WHERE FECHA = " . $hoy = date("Y-m-d") ." ORDER BY ID_PRODUCTO ASC");
         $query = $this->db->query("SELECT * FROM carrito ORDER BY fecha ASC");
 
         if ($query->rowCount() > 0) {
