@@ -109,10 +109,14 @@ body{
     margin: 0 auto 20px;
 }
 
-
- a{
-   color: #000;
- }
+ .form-calendar-container{
+  background: #fff;
+  padding: 35px;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #000;
+}
 
 
 .img-info{
@@ -134,3 +138,27 @@ body{
   font-size: 23px;
 }
 
+.parrafo-Subtitulos{
+  color:#073B4C;
+  text-align: center;
+  font-size: 17px;
+}
+
+aside{
+  width:25%;
+  height: 100vh;
+  background-color: #dad1d1;
+  /* Esto lo mantendra en su sitio */
+  position: fixed;
+  top: 7.8%;
+  left: 0;
+}
+
+.contenido{
+  width: 75%;
+  
+  /* Esto equilibria lo del aside */
+  position: relative;
+  top: 0;
+  left: 25%;
+}

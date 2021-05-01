@@ -3,7 +3,7 @@ include_once('Usuarios.php');
 $ControlSesion = new Usuarios();
 ?>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="index.php">Carrito de compras</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
