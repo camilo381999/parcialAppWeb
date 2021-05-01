@@ -30,32 +30,30 @@ class Carrito extends Conexion
 
     public function selectParaCsv()
     {
-        $statement = $this->db->prepare("SELECT * FROM carrito ORDER BY fecha ASC");
-        $statement->execute();
-        $result = $statement->fetchAll();
+        $query = $this->db->query("SELECT * FROM carrito ORDER BY fecha ASC");
 
-        foreach($result as $r){
-            echo $r['ID_CARRITO'] . ",";
-            echo $r['USUARIOS_ID_USUARIO'] . ",";
-            echo $r['ID_PRODUCTO'] . ",";
-            echo $r['PRODUCTO'] . ",";
-            echo $r['COSTO'] . ",";
-            echo $r['ID_FACTURA'] . ",";
-            echo $r['FECHA'] . "\n";
+        if ($query->rowCount() > 0) {
+            $delimiter =';';
+
+            $f = fopen('php://memory', 'w');
+
+            $fields = array('ID_CARRITO', 'USUARIOS_ID_USUARIO', 'ID_PRODUCTO', 'PRODUCTO',
+             'COSTO', 'ID_FACTURA','FECHA');
+            fputcsv($f, $fields,$delimiter);
+
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $lineData = array($row['ID_CARRITO'], $row['USUARIOS_ID_USUARIO'],
+                 $row['ID_PRODUCTO'], $row['PRODUCTO'], $row['COSTO'], $row['ID_FACTURA'],
+                  $row['FECHA']);
+                fputcsv($f, $lineData,$delimiter);
+            }
+
+            fseek($f, 0);
+
+            header('Content-Type: application/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename= exportar.csv;');
+
+            fpassthru($f);
         }
-        /*while ($result = $statement->fetchAll()) {
-            echo $result->ID_CARRITO . ",";
-            echo $result->USUARIOS_ID_USUARIO . ",";
-            echo $result->ID_PRODUCTO . ",";
-            echo $result->PRODUCTO . ",";
-            echo $result->COSTO . ",";
-            echo $result->ID_FACTURA . ",";
-            echo $result->FECHA . "\n";
-        }*/
-
-
-        header('Content-Type: application/csv');
-        header('Content-Disposition: attachment; filename=export.csv;');
-
     }
 }
