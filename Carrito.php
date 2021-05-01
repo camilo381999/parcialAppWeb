@@ -35,7 +35,7 @@ class Carrito extends Conexion
         if ($query->rowCount() > 0) {
             $delimiter =';';
 
-            $f = fopen('php://memory', 'w');
+            $f = fopen('exportar.csv', 'w'); 
 
             $fields = array('ID_CARRITO', 'USUARIOS_ID_USUARIO', 'ID_PRODUCTO', 'PRODUCTO',
              'COSTO', 'ID_FACTURA','FECHA');
@@ -50,10 +50,10 @@ class Carrito extends Conexion
 
             fseek($f, 0);
 
-            header('Content-Type: application/csv; charset=utf-8');
-            header('Content-Disposition: attachment; filename= exportar.csv;');
+            //header('Content-Type: application/csv; charset=utf-8');
+            //header('Content-Disposition: attachment; filename= exportar.csv;');
 
-            fpassthru($f);
+            
         }
     }
 }
