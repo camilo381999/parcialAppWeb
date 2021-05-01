@@ -8,7 +8,7 @@ include_once('templates/iniciar-html.php');
 include_once('templates/menu.php');
 ?>
 
-<div class="container-fluid" >
+<div class="container-fluid">
     <br><br><br>
     <h2 class="h2-titulos">Nuestros productos</h2>
     <br>
@@ -105,18 +105,18 @@ include_once('templates/menu.php');
                 </table>
 
                 <a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
-                
-                
+
+
 
             </div>
             <br>
-            <a href="<?php
+            <a <?php
                 if ($ModeloUsuarios->sesionIniciada()) {
-                    echo '#';
+                    echo 'href="controladorPago.php"';
                 } else {
-                    echo 'ingresar.php';
+                    echo 'href="ingresar.php"';
                 }
-                ?>" id="procesar-pedido" class="btn btn-danger btn-block">Procesar Compra</a>
+            ?> id="procesar-pedido" class="btn btn-danger btn-block">Procesar Compra</a>
             <br>
             <div class="card border-secondary mb-3" id="cardTotal">
                 <div class="card-header">Factura</div>
