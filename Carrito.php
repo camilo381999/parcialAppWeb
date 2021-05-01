@@ -27,4 +27,35 @@ class Carrito extends Conexion
             return false;
         }
     }
+
+    public function selectParaCsv()
+    {
+        $statement = $this->db->prepare("SELECT * FROM carrito ORDER BY fecha ASC");
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        foreach($result as $r){
+            echo $r['ID_CARRITO'] . ",";
+            echo $r['USUARIOS_ID_USUARIO'] . ",";
+            echo $r['ID_PRODUCTO'] . ",";
+            echo $r['PRODUCTO'] . ",";
+            echo $r['COSTO'] . ",";
+            echo $r['ID_FACTURA'] . ",";
+            echo $r['FECHA'] . "\n";
+        }
+        /*while ($result = $statement->fetchAll()) {
+            echo $result->ID_CARRITO . ",";
+            echo $result->USUARIOS_ID_USUARIO . ",";
+            echo $result->ID_PRODUCTO . ",";
+            echo $result->PRODUCTO . ",";
+            echo $result->COSTO . ",";
+            echo $result->ID_FACTURA . ",";
+            echo $result->FECHA . "\n";
+        }*/
+
+
+        header('Content-Type: application/csv');
+        header('Content-Disposition: attachment; filename=export.csv;');
+
+    }
 }
