@@ -30,6 +30,18 @@ class Carrito extends Conexion
         }
     }
 
+    public function getDataFactura($idFactura)
+    {
+        $statement = $this->db->prepare("SELECT SUM(COSTO) AS COSTO FROM carrito WHERE ID_FACTURA = :idFactura");
+
+        $statement->bindParam(':idFactura', $idFactura);
+        $statement->execute();
+
+        $result = $statement->fetch();
+        return $result;
+
+    }
+
     public function selectParaCsv()
     {
         //$query = $this->db->query("SELECT * FROM carrito WHERE FECHA = " . $hoy = date("Y-m-d") ." ORDER BY ID_PRODUCTO ASC");

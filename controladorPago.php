@@ -22,4 +22,24 @@ foreach ($toarray as $producto) {
     $modelo->add($usuario->getId(), $producto['id'], $producto['titulo'], $valueT, $idFactura, $hoy = date("Y-m-d"));
 }
 
+$compras = $modelo->getDataFactura($idFactura);
+print_r($compras);
+
+$usuarioFull=$usuario->getById($usuario->getId());
+print_r($usuarioFull);
+$to_email = $usuarioFull['CORREO'];
+echo $to_email;
+$subject = "Su compra se ha realizado";
+$body = "Hola, has realizado una compra por un valor de ".$compras['COSTO'];
+$headers = "From: calf381999@gmail.com";
+
+if (mail($to_email, $subject, $body, $headers)) {
+    echo "Done..! Email successfully sent to $to_email .";
+    header('Location: https://www.paypal.com/co/signin');
+} else {
+    echo "Error..! Email Not Sent";
+}
+
+echo "<script>localStorage.clear();</script>";
+
 echo "</body></html>";
