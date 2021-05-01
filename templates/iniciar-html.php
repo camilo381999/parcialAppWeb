@@ -8,6 +8,8 @@
     <title>Carrito de compras</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/jquery.min.js"></script>
+    
 </head>
 
 <body>

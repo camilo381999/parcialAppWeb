@@ -144,21 +144,23 @@ body{
   font-size: 17px;
 }
 
-aside{
-  width:25%;
-  height: 100vh;
-  background-color: #dad1d1;
-  /* Esto lo mantendra en su sitio */
-  position: fixed;
-  top: 7.8%;
-  left: 0;
-}
 
-.contenido{
-  width: 75%;
-  
-  /* Esto equilibria lo del aside */
-  position: relative;
-  top: 0;
-  left: 25%;
+table, th{
+  border:1px solid #f2f2f2;
+}
+tbody {
+  display:block;
+  height:300px;
+  overflow:auto;
+}
+thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+thead {
+  width: 100%;
+}
+table {
+  width:100%;
 }

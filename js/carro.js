@@ -9,6 +9,27 @@ class Carro {
         }
     }
 
+    sumar(){
+        let suma = 0;
+        $("tr").each(function(index) {
+            res= $(this).text().split("\n");
+            //console.log(res[3].trim().replace(/[^0-9\,-]+/g, ""));
+            suma = suma + Number(res[3].trim().replace(/[^0-9\,-]+/g, ""));
+        });
+    
+        var iva = suma * 0.19;
+        var subtotal = suma - iva;
+    
+        const options2 = { style: 'currency', currency: 'COP' };
+        const numberFormat2 = new Intl.NumberFormat('es-CO', options2);
+        $("#subtotal").empty();
+        $("#iva").empty();
+        $("#total").empty();
+        $("#subtotal").append("Subtotal: "+numberFormat2.format(subtotal));
+        $("#iva").append("IVA 19%: "+numberFormat2.format(iva));
+        $("#total").append("Total a pagar: "+numberFormat2.format(suma));
+    }
+
     datosProducto(producto) {
         const info = {
             imagen: producto.querySelector('img').src,
@@ -30,6 +51,7 @@ class Carro {
         `;
         listaProductos.appendChild(row);
         this.guardarLocalStorage(producto);
+        this.sumar();
     }
 
     eliminar(e) {
@@ -41,6 +63,7 @@ class Carro {
             id = producto.querySelector('a').getAttribute('data-id');
         }
         this.eliminarLocalStorage(id);
+        this.sumar();
     }
 
     vaciar(e) {
@@ -49,6 +72,7 @@ class Carro {
             listaProductos.removeChild(listaProductos.firstChild)
         }
         this.vaciarLocalStorage();
+        this.sumar();
         return false;
     }
 
