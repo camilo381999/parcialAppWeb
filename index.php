@@ -110,13 +110,32 @@ include_once('templates/menu.php');
 
             </div>
             <br>
-            <a <?php
+            <form method="GET" action="controladorPago.php">
+                <input hidden type='text' id='inputjson' name='inputjson'>
+                <script>
+                    let producto;
+                    if (localStorage.getItem('productos') === null) {
+                        producto = [];
+                    } else {
+                        producto = JSON.parse(localStorage.getItem('productos'));
+                    }
+                    console.log(producto);
+                    document.getElementById('inputjson').value = JSON.stringify(producto);
+                </script>
+
+                <?php
                 if ($ModeloUsuarios->sesionIniciada()) {
-                    echo 'href="controladorPago.php"';
+                ?>
+                    <button name="procesar-pedido" id="procesar-pedido" type="submit" class="btn btn-danger btn-block">Procesar Compra</button>
+                <?php
                 } else {
-                    echo 'href="ingresar.php"';
+                ?>
+                    <a href="ingresar.php" id="procesar-pedido" class="btn btn-danger btn-block">Procesar Compra</a>
+                <?php
                 }
-            ?> id="procesar-pedido" class="btn btn-danger btn-block">Procesar Compra</a>
+                ?>
+            </form>
+
             <br>
             <div class="card border-secondary mb-3" id="cardTotal">
                 <div class="card-header">Factura</div>

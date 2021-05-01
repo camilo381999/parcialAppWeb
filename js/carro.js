@@ -9,25 +9,25 @@ class Carro {
         }
     }
 
-    sumar(){
+    sumar() {
         let suma = 0;
-        $("tr").each(function(index) {
-            res= $(this).text().split("\n");
+        $("tr").each(function (index) {
+            res = $(this).text().split("\n");
             //console.log(res[3].trim().replace(/[^0-9\,-]+/g, ""));
             suma = suma + Number(res[3].trim().replace(/[^0-9\,-]+/g, ""));
         });
-    
+
         var iva = suma * 0.19;
         var subtotal = suma - iva;
-    
+
         const options2 = { style: 'currency', currency: 'COP' };
         const numberFormat2 = new Intl.NumberFormat('es-CO', options2);
         $("#subtotal").empty();
         $("#iva").empty();
         $("#total").empty();
-        $("#subtotal").append("Subtotal: "+numberFormat2.format(subtotal));
-        $("#iva").append("IVA 19%: "+numberFormat2.format(iva));
-        $("#total").append("Total a pagar: "+numberFormat2.format(suma));
+        $("#subtotal").append("Subtotal: " + numberFormat2.format(subtotal));
+        $("#iva").append("IVA 19%: " + numberFormat2.format(iva));
+        $("#total").append("Total a pagar: " + numberFormat2.format(suma));
     }
 
     datosProducto(producto) {
@@ -52,6 +52,7 @@ class Carro {
         listaProductos.appendChild(row);
         this.guardarLocalStorage(producto);
         this.sumar();
+        this.actualizarinput();
     }
 
     eliminar(e) {
@@ -64,6 +65,7 @@ class Carro {
         }
         this.eliminarLocalStorage(id);
         this.sumar();
+        this.actualizarinput();
     }
 
     vaciar(e) {
@@ -73,6 +75,7 @@ class Carro {
         }
         this.vaciarLocalStorage();
         this.sumar();
+        this.actualizarinput();
         return false;
     }
 
@@ -125,8 +128,19 @@ class Carro {
     }
 
     //Elimina todo lo que hay en el Local storage
-    vaciarLocalStorage(){
+    vaciarLocalStorage() {
         localStorage.clear();
+    }
+
+    actualizarinput() {
+        let producto;
+        if (localStorage.getItem('productos') === null) {
+            producto = [];
+        } else {
+            producto = JSON.parse(localStorage.getItem('productos'));
+        }
+        console.log(producto);
+        document.getElementById('inputjson').value = JSON.stringify(producto);
     }
 
 }

@@ -2,7 +2,7 @@
 include_once('Conexion.php');
 include_once('Usuarios.php');
 
-class Publicacion extends Conexion
+class Carrito extends Conexion
 {
 
     function __construct()
